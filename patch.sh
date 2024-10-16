@@ -1,15 +1,28 @@
+# Setting script to run in bash
 #!/bin/bash
 
-# Path to the file you want to check
+# Moving to game directory
+cd drive_c/'Program Files (x86)'/'Phantasy Star Universe Clementine'
+
+# Setting patched exe path as a variable
 FILE="PSUC.exe.pat"
 
-# Function to perform an action if the file exists
-perform_action() {
+# Defining function to replace original exe with the patched one
+replace_exe() {
     mv PSUC.exe PSUC.exe.bak && mv PSUC.exe.pat PSUC.exe
 }
 
-# Check if the file exists
+# Checking if the patched exe exists
 if [ -e "$FILE" ]; then
-    perform_action
-    else
-    fi
+
+# Calling function
+replace_exe
+
+# Sleep for x amount of time
+sleep 2
+
+# Restarting Game
+env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/199
+
+# Close script
+fi
