@@ -1,4 +1,3 @@
-# Setting script to run in bash
 #!/bin/bash
 
 # Moving to game directory
